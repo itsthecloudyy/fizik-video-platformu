@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video İzle - Fizik Video Platformu</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: #f5f5f5;
+            line-height: 1.6;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        header { 
+            background: #4f46e5; 
+            color: white; 
+            padding: 20px; 
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .video-player { 
+            background: #000; 
+            border-radius: 10px; 
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .video-info { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .btn { 
+            background: #4f46e5; 
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 10px;
+            transition: background 0.3s;
+        }
+        .btn:hover { 
+            background: #3730a3; 
+        }
+        .video-meta {
+            display: flex;
+            gap: 20px;
+            color: #6b7280;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        .video-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        h2 {
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+        .video-description {
+            color: #4b5563;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 Video Oynatıcı</h1>
+            <a href="unite-list.html" class="btn">← Ünitelere Geri Dön</a>
+        </header>
+
+        <div class="video-player">
+            <video controls width="100%">
+    <source src="https://ia601006.us.archive.org/22/items/1_20251009_20251009_1605/1.mp4" type="video/mp4">
+    Tarayıcınız video oynatmayı desteklemiyor.
+</video>
+        </div>
+        
+        <div class="video-info">
+            <h2 id="video-title">Fizik Bilimi ve Kariyer Keşfi</h2>
+            
+            <div class="video-meta">
+                <span id="video-duration">⏱️ 12:23</span>
+                <span id="video-unit">📚 Fizik Bilimine Giriş</span>
+            </div>
+            
+            <p class="video-description" id="video-desc">
+                Açıklama yok.
+            </p>
+
+    <script>
+        // URL'den video bilgisini al
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoName = urlParams.get('video');
+        
+        if (videoName === '1') {
+            document.getElementById('video-title').textContent = 'Fizik Bilimi ve Kariyer Keşfi';
+            document.getElementById('video-desc').textContent = 'Açıklama yok.';
+            document.getElementById('video-duration').textContent = '⏱️ 12:23';
+            document.getElementById('video-unit').textContent = '📚 Fizik Bilimine Giriş';
+            document.querySelector('video source').src = 'https://ia601006.us.archive.org/22/items/1_20251009_20251009_1605/1.mp4';
+        }
+
+        else if (videoName === '2') {
+            document.getElementById('video-title').textContent = 'Fiziksel Nicelikler';
+            document.getElementById('video-desc').textContent = 'Açıklama yok.';
+            document.getElementById('video-duration').textContent = '⏱️ 8:19';
+            document.getElementById('video-unit').textContent = '📚 Kuvvet ve Hareket';
+            document.querySelector('video source').src = 'https://ia601003.us.archive.org/29/items/2_20251009_20251009_1623/2.mp4';
+        }
+
+        else if (videoName === '3') {
+            document.getElementById('video-title').textContent = 'Basınç';
+            document.getElementById('video-desc').textContent = 'Açıklama yok.';
+            document.getElementById('video-duration').textContent = '⏱️ 8:36';
+            document.getElementById('video-unit').textContent = '📚 Basınç';
+            document.querySelector('video source').src = 'https://ia601003.us.archive.org/32/items/3_20251009_202510/3.mp4';
+        }
+
+        else if (videoName === '4') {
+            document.getElementById('video-title').textContent = 'Sıvılarda Basınç';
+            document.getElementById('video-desc').textContent = 'Açıklama yok.';
+            document.getElementById('video-duration').textContent = '⏱️ 12:49';
+            document.getElementById('video-unit').textContent = '📚 Basınç';
+            document.querySelector('video source').src = 'https://ia601008.us.archive.org/11/items/4_20251009_202510/4.mp4';
+        }
+
+        else if (videoName === '5') {
+            document.getElementById('video-title').textContent = 'Açık Hava Basıncı';
+            document.getElementById('video-desc').textContent = 'Açıklama yok.';
+            document.getElementById('video-duration').textContent = '⏱️ 5:48';
+            document.getElementById('video-unit').textContent = '📚 Basınç';
+            document.querySelector('video source').src = 'https://ia600602.us.archive.org/25/items/5_20251009_202510/5.mp4';
+        }
+
+        else if (videoName === '6') {
+            document.getElementById('video-title').textContent = 'Kaldırma Kuvveti';
+            document.getElementById('video-desc').textContent = 'Açıklama yok.';
+            document.getElementById('video-duration').textContent = '⏱️ 7:24';
+            document.getElementById('video-unit').textContent = '📚 Kaldırma Kuvveti';
+            document.querySelector('video source').src = 'https://ia801008.us.archive.org/33/items/6_20251009_20251009/6.mp4';
+        }
+
+        else if (videoName === '7') {
+            document.getElementById('video-title').textContent = 'Bernoulli İlkesi';
+            document.getElementById('video-desc').textContent = 'Açıklama yok.';
+            document.getElementById('video-duration').textContent = '⏱️ 6:41';
+            document.getElementById('video-unit').textContent = '📚 Akışkan Basıncı';
+            document.querySelector('video source').src = 'https://ia601004.us.archive.org/3/items/7_20251009_202510/7.mp4';
+        }
+
+        else if (videoName === '8') {
+            document.getElementById('video-title').textContent = 'Isı ve Sıcaklık Kavramları';
+            document.getElementById('video-desc').textContent = 'Açıklama yok.';
+            document.getElementById('video-duration').textContent = '⏱️ 11:07';
+            document.getElementById('video-unit').textContent = '📚 Isı ve Sıcaklık';
+            document.querySelector('video source').src = 'https://ia801000.us.archive.org/9/items/8_20251009_20251009_1725/8.mp4';
+        }
+
+        else if (videoName === '9') {
+            document.getElementById('video-title').textContent = 'Hal Değişimi';
+            document.getElementById('video-desc').textContent = 'Açıklama yok.';
+            document.getElementById('video-duration').textContent = '⏱️ 11:27';
+            document.getElementById('video-unit').textContent = '📚 Isı ve Sıcaklık';
+            document.querySelector('video source').src = 'https://ia801008.us.archive.org/19/items/9_20251009_202510/9.mp4';
+        }
+
+        else if (videoName === '10') {
+            document.getElementById('video-title').textContent = 'Isıl Denge';
+            document.getElementById('video-desc').textContent = 'Açıklama yok.';
+            document.getElementById('video-duration').textContent = '⏱️ 13:50';
+            document.getElementById('video-unit').textContent = '📚 Isı ve Sıcaklık';
+            document.querySelector('video source').src = 'https://ia902803.us.archive.org/26/items/10_20251009_20251009_1803/10.mp4';
+        }
+
+        else if (videoName === '11') {
+            document.getElementById('video-title').textContent = 'Isı Aktarım Yolları ve Isı İletim Hızı';
+            document.getElementById('video-desc').textContent = 'Açıklama yok.';
+            document.getElementById('video-duration').textContent = '⏱️ 10:04';
+            document.getElementById('video-unit').textContent = '📚 Isı ve Sıcaklık';
+            document.querySelector('video source').src = 'https://ia601608.us.archive.org/11/items/11_20251009_202510/11.mp4';
+        }
+        
+        // Video elementini yeniden yükle
+        document.querySelector('video').load();
+    </script>
+</body>
+</html>
