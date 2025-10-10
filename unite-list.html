@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Üniteler - Fizik Video Platformu</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">⚡</span>
+                Fizik Platformu
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">🏠 Ana Sayfa</a>
+                <a href="unite-list.html" class="nav-link active">📚 Üniteler</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 data-aos="fade-up">Fizik Üniteleri</h1>
+            <p data-aos="fade-up" data-aos-delay="100">9. sınıf fizik müfredatının tüm ünitelerini keşfet</p>
+        </div>
+    </section>
+
+    <section class="units-section">
+        <div class="container">
+            <div class="search-bar" data-aos="fade-up">
+                <input type="text" id="search-input" placeholder="🔍 Ünite veya video ara...">
+            </div>
+            
+            <div class="units-container" id="units-container">
+                <!-- JavaScript ile doldurulacak -->
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    <script>
+        AOS.init();
+        loadAllUnits();
+    </script>
+</body>
+</html>

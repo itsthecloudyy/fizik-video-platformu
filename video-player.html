@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video İzle - Fizik Video Platformu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">⚡</span>
+                Fizik Platformu
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">🏠 Ana Sayfa</a>
+                <a href="unite-list.html" class="nav-link">📚 Üniteler</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="video-player-container">
+        <div class="container">
+            <a href="unite-list.html" class="back-btn">
+                <span class="back-icon">←</span>
+                Ünitelere Dön
+            </a>
+
+            <div class="video-content">
+                <div class="video-main">
+                    <div class="video-wrapper">
+                        <video id="main-video" controls>
+                            <source src="" type="video/mp4">
+                            Tarayıcınız video oynatmayı desteklemiyor.
+                        </video>
+                    </div>
+                    
+                    <div class="video-info">
+                        <h1 id="video-title">Video Başlığı</h1>
+                        <div class="video-meta">
+                            <span class="meta-item" id="video-duration">⏱️ 00:00</span>
+                            <span class="meta-item" id="video-unit">📚 Ünite</span>
+                            <span class="meta-item" id="video-views">👁️ 0 izlenme</span>
+                        </div>
+                        <p class="video-description" id="video-desc">Video açıklaması...</p>
+                    </div>
+                </div>
+
+                <div class="video-sidebar">
+                    <h3>Bu Ünitedeki Diğer Videolar</h3>
+                    <div class="related-videos" id="related-videos">
+                        <!-- JavaScript ile doldurulacak -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        loadVideoPlayer();
+    </script>
+</body>
+</html>
