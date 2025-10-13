@@ -1,4 +1,3 @@
-// Video veri yapısı
 const videoData = {
     units: [
         {
@@ -128,43 +127,20 @@ const videoData = {
     ]
 };
 
-// LocalStorage fonksiyonları
-function getVideoViews(videoId) {
-    return parseInt(localStorage.getItem(`video_${videoId}_views`) || '0');
-}
-
-function incrementVideoViews(videoId) {
-    const currentViews = getVideoViews(videoId);
-    localStorage.setItem(`video_${videoId}_views`, (currentViews + 1).toString());
-    return currentViews + 1;
-}
-
-function getVideoProgress(videoId) {
-    return parseFloat(localStorage.getItem(`video_${videoId}_progress`) || '0');
-}
-
-function setVideoProgress(videoId, progress) {
-    localStorage.setItem(`video_${videoId}_progress`, progress.toString());
-}
-
-// Öne çıkan videoları yükle
 function loadFeaturedVideos() {
     const container = document.getElementById('featured-videos-container');
     if (!container) return;
 
     const featuredVideos = videoData.units.flatMap(unit => unit.videos).slice(0, 6);
-    
+
     container.innerHTML = featuredVideos.map(video => `
         <div class="video-card" onclick="openVideo(${video.id})" data-aos="fade-up">
-            <div class="video-thumbnail">
-                ${video.title.charAt(0)}
-            </div>
+            <div class="video-thumbnail">${video.title.charAt(0)}</div>
             <div class="video-card-content">
                 <h3 class="video-card-title">${video.title}</h3>
                 <p class="video-card-desc">${video.description}</p>
                 <div class="video-card-meta">
                     <span>⏱️ ${video.duration}</span>
-                    <span>👁️ ${getVideoViews(video.id)} izlenme</span>
                     <span>📚 ${video.unit}</span>
                 </div>
             </div>
@@ -172,7 +148,6 @@ function loadFeaturedVideos() {
     `).join('');
 }
 
-// Tüm üniteleri yükle
 function loadAllUnits() {
     const container = document.getElementById('units-container');
     if (!container) return;
@@ -186,124 +161,70 @@ function loadAllUnits() {
                 ${unit.videos.map(video => `
                     <div class="video-item" onclick="openVideo(${video.id})">
                         <div class="video-item-icon">▶</div>
-                        <div class="video-item-content">
+                        <div class="video-item-info">
                             <div class="video-item-title">${video.title}</div>
-                            <div class="video-item-meta">
-                                <span>⏱️ ${video.duration}</span>
-                                <span>👁️ ${getVideoViews(video.id)} izlenme</span>
-                            </div>
+                            <div class="video-item-duration">⏱️ ${video.duration}</div>
                         </div>
                     </div>
                 `).join('')}
             </div>
         </div>
     `).join('');
-
-    // Arama fonksiyonelliği
-    const searchInput = document.getElementById('search-input');
-    if (searchInput) {
-        searchInput.addEventListener('input', filterVideos);
-    }
 }
 
-// Video filtreleme
-function filterVideos(e) {
-    const searchTerm = e.target.value.toLowerCase();
-    const videoItems = document.querySelectorAll('.video-item');
-    
-    videoItems.forEach(item => {
-        const title = item.querySelector('.video-item-title').textContent.toLowerCase();
-        if (title.includes(searchTerm)) {
-            item.style.display = 'flex';
-        } else {
-            item.style.display = 'none';
-        }
-    });
-}
-
-// Video oynatıcıyı yükle
-function loadVideoPlayer() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const videoId = parseInt(urlParams.get('video'));
-    
-    const video = videoData.units.flatMap(unit => unit.videos).find(v => v.id === videoId);
-    
-    if (video) {
-        // Video bilgilerini güncelle
-        document.getElementById('video-title').textContent = video.title;
-        document.getElementById('video-desc').textContent = video.description;
-        document.getElementById('video-duration').textContent = `⏱️ ${video.duration}`;
-        document.getElementById('video-unit').textContent = `📚 ${video.unit}`;
-        document.getElementById('video-views').textContent = `👁️ ${getVideoViews(video.id)} izlenme`;
-        
-        // Video kaynağını ayarla
-        const videoElement = document.getElementById('main-video');
-        videoElement.querySelector('source').src = video.videoUrl;
-        videoElement.load();
-        
-        // İzlenme sayısını artır
-        const newViews = incrementVideoViews(video.id);
-        document.getElementById('video-views').textContent = `👁️ ${newViews} izlenme`;
-        
-        // İlerlemeyi takip et
-        videoElement.addEventListener('timeupdate', function() {
-            const progress = (this.currentTime / this.duration) * 100;
-            setVideoProgress(video.id, progress);
-        });
-        
-        // Kayıtlı ilerlemeyi yükle
-        const savedProgress = getVideoProgress(video.id);
-        if (savedProgress > 0) {
-            videoElement.addEventListener('loadedmetadata', function() {
-                this.currentTime = (savedProgress / 100) * this.duration;
-            });
-        }
-        
-        // İlgili videoları yükle
-        loadRelatedVideos(video.unit, video.id);
-    }
-}
-
-// İlgili videoları yükle
-function loadRelatedVideos(unitName, currentVideoId) {
-    const container = document.getElementById('related-videos');
-    if (!container) return;
-    
-    const relatedVideos = videoData.units
-        .flatMap(unit => unit.videos)
-        .filter(video => video.unit === unitName && video.id !== currentVideoId);
-    
-    container.innerHTML = relatedVideos.map(video => `
-        <a href="video-player.html?video=${video.id}" class="related-video-item">
-            <div class="video-item-icon">▶</div>
-            <div class="video-item-content">
-                <div class="video-item-title">${video.title}</div>
-                <div class="video-item-meta">
-                    <span>⏱️ ${video.duration}</span>
-                </div>
-            </div>
-        </a>
-    `).join('');
-}
-
-// Video açma fonksiyonu
 function openVideo(videoId) {
-    window.location.href = `video-player.html?video=${videoId}`;
+    const video = videoData.units.flatMap(u => u.videos).find(v => v.id === videoId);
+    if (!video) return alert('Video bulunamadı.');
+
+    const videoSection = document.getElementById('video-player-section');
+    if (!videoSection) {
+        createVideoPlayerSection(video);
+    } else {
+        updateVideoPlayer(video);
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Sayfa yüklendiğinde çalışacak fonksiyonlar
-document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-});
+function createVideoPlayerSection(video) {
+    const container = document.createElement('section');
+    container.id = 'video-player-section';
+    container.innerHTML = `
+        <div class="container" data-aos="fade-down">
+            <button id="close-video-btn">✖ Kapat</button>
+            <h2>${video.title}</h2>
+            <video id="video-player" controls preload="metadata" width="100%" height="auto">
+                <source src="${video.videoUrl}" type="video/mp4" />
+                Tarayıcınız video etiketini desteklemiyor.
+            </video>
+            <p>${video.description}</p>
+        </div>
+    `;
+    document.body.insertBefore(container, document.body.firstChild);
+    document.getElementById('close-video-btn').addEventListener('click', closeVideoPlayer);
+}
+
+function updateVideoPlayer(video) {
+    const videoPlayer = document.getElementById('video-player');
+    const videoTitle = document.querySelector('#video-player-section h2');
+    const videoDesc = document.querySelector('#video-player-section p');
+    if (videoPlayer && videoTitle && videoDesc) {
+        videoPlayer.pause();
+        videoPlayer.src = video.videoUrl;
+        videoPlayer.load();
+        videoTitle.textContent = video.title;
+        videoDesc.textContent = video.description;
+    }
+}
+
+function closeVideoPlayer() {
+    const videoSection = document.getElementById('video-player-section');
+    if (videoSection) {
+        videoSection.remove();
+    }
+}
+
+if (document.readyState !== 'loading') {
+    loadFeaturedVideos();
+} else {
+    document.addEventListener('DOMContentLoaded', loadFeaturedVideos);
+}
