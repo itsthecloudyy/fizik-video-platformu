@@ -1,113 +1,104 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fizik Video Platformu</title>
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fizik Video Platformu</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-icon">⚡</span>
-                Fizik Platformu
-            </div>
-            <div class="nav-menu">
-                <a href="index.html" class="nav-link active">🏠 Ana Sayfa</a>
-                <a href="unite-list.html" class="nav-link">📚 Üniteler</a>
-            </div>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-content" data-aos="fade-up">
-            <h1 class="hero-title">
-                Fizik Öğrenmek Hiç Bu Kadar <span class="gradient-text">Eğlenceli</span> Olmamıştı!
-            </h1>
-            <p class="hero-description">
-                9. sınıf fizik müfredatını interaktif videolarla keşfet. Üniteleri kolayca anla, soruları çöz, fizikte uzmanlaş!
-            </p>
-            <div class="hero-buttons">
-                <a href="unite-list.html" class="btn btn-primary">
-                    <span class="btn-icon">🚀</span> Hemen Başla
-                </a>
-                <a href="#featured" class="btn btn-secondary">
-                    <span class="btn-icon">📺</span> Videoları Keşfet
-                </a>
-            </div>
-        </div>
-        <div class="hero-visual" data-aos="fade-left">
-            <div class="floating-card card-1">
-                <div class="card-icon">🎯</div>
-                <div class="card-text">Kolay Anlaşılır</div>
-            </div>
-            <div class="floating-card card-2">
-                <div class="card-icon">⚡</div>
-                <div class="card-text">Hızlı Öğrenme</div>
-            </div>
-            <div class="floating-card card-3">
-                <div class="card-icon">📈</div>
-                <div class="card-text">Başarı Garantili</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item" data-aos="fade-up">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">Eğitim Videosu</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="stat-number">6</div>
-                    <div class="stat-label">Fizik Ünitesi</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="stat-number">28+</div>
-                    <div class="stat-label">Mutlu Öğrenci</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="featured" class="featured-videos">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Öne Çıkan Videolar</h2>
-            <div class="videos-grid" id="featured-videos-container"></div>
-        </div>
-    </section>
-
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Neden Biz?</h2>
-            <div class="features-grid">
-                <div class="feature-card" data-aos="fade-up">
-                    <div class="feature-icon">🎓</div>
-                    <h3>Uzman Eğitmenler</h3>
-                    <p>Alanında uzman fizik öğretmenleri tarafından hazırlanan içerikler</p>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="feature-icon">🖥️</div>
-                    <h3>Akıllı Tahta & Bilgisayar Uyumlu</h3>
-                    <p>Akıllı tahtalarda ve bilgisayarlarda tam ekran, yüksek çözünürlüklü deneyim</p>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Hızlı Öğrenme</h3>
-                    <p>Konsantre videolarla kısa sürede maksimum öğrenme</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script>
-    <script>
-        AOS.init();
-        loadFeaturedVideos();
-    </script>
+<nav class="navbar">
+<div class="nav-container">
+<div class="nav-logo">
+<span class="logo-icon">⚡</span> Fizik Platformu
+</div>
+<div class="nav-menu">
+<a href="index.html" class="nav-link active">🏠 Ana Sayfa</a>
+<a href="unite-list.html" class="nav-link">📚 Üniteler</a>
+</div>
+</div>
+</nav>
+<section class="hero">
+<div class="hero-content" data-aos="fade-up">
+<h1 class="hero-title">Fizik Öğrenmek Hiç Bu Kadar <span class="gradient-text">Eğlenceli</span> Olmamıştı!</h1>
+<p class="hero-description">9. sınıf fizik müfredatını interaktif videolarla keşfet. Üniteleri kolayca anla, soruları çöz, fizikte uzmanlaş!</p>
+<div class="hero-buttons">
+<a href="unite-list.html" class="btn btn-primary">
+<span class="btn-icon">🚀</span> Hemen Başla
+</a>
+<a href="#featured" class="btn btn-secondary">
+<span class="btn-icon">📺</span> Videoları Keşfet
+</a>
+</div>
+</div>
+<div class="hero-visual" data-aos="fade-left">
+<div class="floating-card card-1">
+<div class="card-icon">🎯</div>
+<div class="card-text">Kolay Anlaşılır</div>
+</div>
+<div class="floating-card card-2">
+<div class="card-icon">⚡</div>
+<div class="card-text">Hızlı Öğrenme</div>
+</div>
+<div class="floating-card card-3">
+<div class="card-icon">📈</div>
+<div class="card-text">Başarı Garantili</div>
+</div>
+</div>
+</section>
+<section class="stats">
+<div class="container">
+<div class="stats-grid">
+<div class="stat-item" data-aos="fade-up">
+<div class="stat-number">10+</div>
+<div class="stat-label">Eğitim Videosu</div>
+</div>
+<div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+<div class="stat-number">6</div>
+<div class="stat-label">Fizik Ünitesi</div>
+</div>
+<div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+<div class="stat-number">28+</div>
+<div class="stat-label">Mutlu Öğrenci</div>
+</div>
+</div>
+</div>
+</section>
+<section id="featured" class="featured-videos">
+<div class="container">
+<h2 class="section-title" data-aos="fade-up">Öne Çıkan Videolar</h2>
+<div class="videos-grid" id="featured-videos-container">
+</div>
+</div>
+</section>
+<section class="features">
+<div class="container">
+<h2 class="section-title" data-aos="fade-up">Neden Biz?</h2>
+<div class="features-grid">
+<div class="feature-card" data-aos="fade-up">
+<div class="feature-icon">🎓</div>
+<h3>Uzman Eğitmenler</h3>
+<p>Alanında uzman fizik öğretmenleri tarafından hazırlanan içerikler</p>
+</div>
+<div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+<div class="feature-icon">🖥️</div>
+<h3>Akıllı Tahta & Bilgisayar Uyumlu</h3>
+<p>Akıllı tahtalarda ve bilgisayarlarda tam ekran, yüksek çözünürlüklü deneyim</p>
+</div>
+<div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+<div class="feature-icon">⚡</div>
+<h3>Hızlı Öğrenme</h3>
+<p>Konsantre videolarla kısa sürede maksimum öğrenme</p>
+</div>
+</div>
+</div>
+</section>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="script.js"></script>
+<script>
+AOS.init();
+loadFeaturedVideos();
+</script>
 </body>
 </html>
