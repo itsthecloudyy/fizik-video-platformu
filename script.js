@@ -127,7 +127,6 @@ const videoData = {
   ]
 };
 
-// LocalStorage fonksiyonları
 function getVideoViews(videoId) {
     return parseInt(localStorage.getItem(`video_${videoId}_views`) || '0');
 }
@@ -146,7 +145,6 @@ function setVideoProgress(videoId, progress) {
     localStorage.setItem(`video_${videoId}_progress`, progress.toString());
 }
 
-// Öne çıkan videoları yükle
 function loadFeaturedVideos() {
     const container = document.getElementById('featured-videos-container');
     if (!container) return;
@@ -171,7 +169,6 @@ function loadFeaturedVideos() {
     `).join('');
 }
 
-// Tüm üniteleri yükle
 function loadAllUnits() {
     const container = document.getElementById('units-container');
     if (!container) return;
@@ -198,14 +195,12 @@ function loadAllUnits() {
         </div>
     `).join('');
 
-    // Arama fonksiyonelliği
     const searchInput = document.getElementById('search-input');
     if (searchInput) {
         searchInput.addEventListener('input', filterVideos);
     }
 }
 
-// Video filtreleme
 function filterVideos(e) {
     const searchTerm = e.target.value.toLowerCase();
     const videoItems = document.querySelectorAll('.video-item');
@@ -220,7 +215,6 @@ function filterVideos(e) {
     });
 }
 
-// Video oynatıcıyı yükle
 function loadVideoPlayer() {
     const urlParams = new URLSearchParams(window.location.search);
     const videoId = parseInt(urlParams.get('video'));
@@ -228,29 +222,24 @@ function loadVideoPlayer() {
     const video = videoData.units.flatMap(unit => unit.videos).find(v => v.id === videoId);
     
     if (video) {
-        // Video bilgilerini güncelle
         document.getElementById('video-title').textContent = video.title;
         document.getElementById('video-desc').textContent = video.description;
         document.getElementById('video-duration').textContent = `⏱️ ${video.duration}`;
         document.getElementById('video-unit').textContent = `📚 ${video.unit}`;
         document.getElementById('video-views').textContent = `👁️ ${getVideoViews(video.id)} izlenme`;
         
-        // Video kaynağını ayarla
         const videoElement = document.getElementById('main-video');
         videoElement.querySelector('source').src = video.videoUrl;
         videoElement.load();
         
-        // İzlenme sayısını artır
         const newViews = incrementVideoViews(video.id);
         document.getElementById('video-views').textContent = `👁️ ${newViews} izlenme`;
         
-        // İlerlemeyi takip et
         videoElement.addEventListener('timeupdate', function() {
             const progress = (this.currentTime / this.duration) * 100;
             setVideoProgress(video.id, progress);
         });
         
-        // Kayıtlı ilerlemeyi yükle
         const savedProgress = getVideoProgress(video.id);
         if (savedProgress > 0) {
             videoElement.addEventListener('loadedmetadata', function() {
@@ -258,12 +247,10 @@ function loadVideoPlayer() {
             });
         }
         
-        // İlgili videoları yükle
         loadRelatedVideos(video.unit, video.id);
     }
 }
 
-// İlgili videoları yükle
 function loadRelatedVideos(unitName, currentVideoId) {
     const container = document.getElementById('related-videos');
     if (!container) return;
@@ -285,14 +272,11 @@ function loadRelatedVideos(unitName, currentVideoId) {
     `).join('');
 }
 
-// Video açma fonksiyonu
 function openVideo(videoId) {
     window.location.href = `video-player.html?video=${videoId}`;
 }
 
-// Sayfa yüklendiğinde çalışacak fonksiyonlar
 document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -306,4 +290,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
