@@ -161,7 +161,6 @@ function loadFeaturedVideos() {
                 <p class="video-card-desc">${video.description}</p>
                 <div class="video-card-meta">
                     <span>⏱️ ${video.duration}</span>
-                    <span>👁️ ${getVideoViews(video.id)} izlenme</span>
                     <span>📚 ${video.unit}</span>
                 </div>
             </div>
@@ -186,7 +185,6 @@ function loadAllUnits() {
                             <div class="video-item-title">${video.title}</div>
                             <div class="video-item-meta">
                                 <span>⏱️ ${video.duration}</span>
-                                <span>👁️ ${getVideoViews(video.id)} izlenme</span>
                             </div>
                         </div>
                     </div>
@@ -290,3 +288,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
