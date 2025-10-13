@@ -1,35 +1,131 @@
-const featuredVideos = [
-  {
-    id: 1,
-    title: "Newton'un Hareket Yasaları",
-    description: "Newton'un hareket yasalarını öğrenin ve günlük hayatla ilişkilendirin.",
-    thumbnail: "https://img.youtube.com/vi/8Ds0JY5XR1o/maxresdefault.jpg",
-    duration: "15:30",
-    views: 1245,
-    uploadDate: "2024-01-10",
-    url: "https://www.youtube.com/embed/8Ds0JY5XR1o"
-  },
-  {
-    id: 2,
-    title: "Elektrik ve Manyetizma",
-    description: "Elektrik ve manyetizmanın temel prensiplerini kavrayın.",
-    thumbnail: "https://img.youtube.com/vi/Z3b2vJHgQ5M/maxresdefault.jpg",
-    duration: "20:10",
-    views: 980,
-    uploadDate: "2024-02-05",
-    url: "https://www.youtube.com/embed/Z3b2vJHgQ5M"
-  },
-  {
-    id: 3,
-    title: "Termodinamik Temelleri",
-    description: "Sıcaklık, ısı ve enerji dönüşümlerini anlayın.",
-    thumbnail: "https://img.youtube.com/vi/k3aVvDZ1Ra8/maxresdefault.jpg",
-    duration: "18:45",
-    views: 870,
-    uploadDate: "2024-03-12",
-    url: "https://www.youtube.com/embed/k3aVvDZ1Ra8"
-  }
-];
+const videoData = {
+  units: [
+    {
+      id: 1,
+      title: "Fizik Bilimi ve Kariyer Keşfi",
+      videos: [
+        {
+          id: 1,
+          title: "Fizik Bilimi ve Kariyer Keşfi",
+          description: "Fizik biliminin temelleri ve fizik alanındaki kariyer olanakları",
+          duration: "12:23",
+          unit: "Fizik Bilimine Giriş",
+          videoUrl: "https://ia601006.us.archive.org/22/items/1_20251009_20251009_1605/1.mp4"
+        }
+      ]
+    },
+    {
+      id: 2,
+      title: "Kuvvet ve Hareket",
+      videos: [
+        {
+          id: 2,
+          title: "Fiziksel Nicelikler",
+          description: "Fizikte kullanılan temel nicelikler ve birim sistemleri",
+          duration: "8:19",
+          unit: "Kuvvet ve Hareket",
+          videoUrl: "https://ia601003.us.archive.org/29/items/2_20251009_20251009_1623/2.mp4"
+        }
+      ]
+    },
+    {
+      id: 3,
+      title: "Basınç",
+      videos: [
+        {
+          id: 3,
+          title: "Basınç",
+          description: "Basınç kavramı ve temel basınç formülleri",
+          duration: "8:36",
+          unit: "Basınç",
+          videoUrl: "https://ia601003.us.archive.org/32/items/3_20251009_202510/3.mp4"
+        },
+        {
+          id: 4,
+          title: "Sıvılarda Basınç",
+          description: "Sıvıların basıncı ve Pascal prensibi",
+          duration: "12:49",
+          unit: "Basınç",
+          videoUrl: "https://ia601008.us.archive.org/11/items/4_20251009_202510/4.mp4"
+        },
+        {
+          id: 5,
+          title: "Açık Hava Basıncı",
+          description: "Atmosfer basıncı ve günlük hayattaki etkileri",
+          duration: "5:48",
+          unit: "Basınç",
+          videoUrl: "https://ia600602.us.archive.org/25/items/5_20251009_202510/5.mp4"
+        }
+      ]
+    },
+    {
+      id: 4,
+      title: "Kaldırma Kuvveti",
+      videos: [
+        {
+          id: 6,
+          title: "Kaldırma Kuvveti",
+          description: "Arşimet prensibi ve kaldırma kuvveti uygulamaları",
+          duration: "7:24",
+          unit: "Kaldırma Kuvveti",
+          videoUrl: "https://ia801008.us.archive.org/33/items/6_20251009_20251009/6.mp4"
+        }
+      ]
+    },
+    {
+      id: 5,
+      title: "Akışkan Basıncı",
+      videos: [
+        {
+          id: 7,
+          title: "Bernoulli İlkesi",
+          description: "Akışkanlar dinamiği ve Bernoulli ilkesi",
+          duration: "6:41",
+          unit: "Akışkan Basıncı",
+          videoUrl: "https://ia601004.us.archive.org/3/items/7_20251009_202510/7.mp4"
+        }
+      ]
+    },
+    {
+      id: 6,
+      title: "Isı ve Sıcaklık",
+      videos: [
+        {
+          id: 8,
+          title: "Isı ve Sıcaklık Kavramları",
+          description: "Isı ve sıcaklık kavramlarının temel farkları",
+          duration: "11:07",
+          unit: "Isı ve Sıcaklık",
+          videoUrl: "https://ia801000.us.archive.org/9/items/8_20251009_20251009_1725/8.mp4"
+        },
+        {
+          id: 9,
+          title: "Hal Değişimi",
+          description: "Maddenin halleri ve hal değişim süreçleri",
+          duration: "11:27",
+          unit: "Isı ve Sıcaklık",
+          videoUrl: "https://ia801008.us.archive.org/19/items/9_20251009_202510/9.mp4"
+        },
+        {
+          id: 10,
+          title: "Isıl Denge",
+          description: "Termal denge ve ısı transferi",
+          duration: "13:50",
+          unit: "Isı ve Sıcaklık",
+          videoUrl: "https://ia902803.us.archive.org/26/items/10_20251009_20251009_1803/10.mp4"
+        },
+        {
+          id: 11,
+          title: "Isı Aktarım Yolları ve Isı İletim Hızı",
+          description: "Isı transfer yöntemleri ve iletim hızı",
+          duration: "10:04",
+          unit: "Isı ve Sıcaklık",
+          videoUrl: "https://ia601608.us.archive.org/11/items/11_20251009_202510/11.mp4"
+        }
+      ]
+    }
+  ]
+};
 
 // LocalStorage fonksiyonları
 function getVideoViews(videoId) {
@@ -210,3 +306,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
