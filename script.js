@@ -127,16 +127,6 @@ const videoData = {
   ]
 };
 
-function getVideoViews(videoId) {
-    return parseInt(localStorage.getItem(`video_${videoId}_views`) || '0');
-}
-
-function incrementVideoViews(videoId) {
-    const currentViews = getVideoViews(videoId);
-    localStorage.setItem(`video_${videoId}_views`, (currentViews + 1).toString());
-    return currentViews + 1;
-}
-
 function getVideoProgress(videoId) {
     return parseFloat(localStorage.getItem(`video_${videoId}_progress`) || '0');
 }
@@ -161,7 +151,6 @@ function loadFeaturedVideos() {
                 <p class="video-card-desc">${video.description}</p>
                 <div class="video-card-meta">
                     <span>⏱️ ${video.duration}</span>
-                    <span>👁️ ${getVideoViews(video.id)} izlenme</span>
                     <span>📚 ${video.unit}</span>
                 </div>
             </div>
@@ -186,7 +175,6 @@ function loadAllUnits() {
                             <div class="video-item-title">${video.title}</div>
                             <div class="video-item-meta">
                                 <span>⏱️ ${video.duration}</span>
-                                <span>👁️ ${getVideoViews(video.id)} izlenme</span>
                             </div>
                         </div>
                     </div>
@@ -226,14 +214,10 @@ function loadVideoPlayer() {
         document.getElementById('video-desc').textContent = video.description;
         document.getElementById('video-duration').textContent = `⏱️ ${video.duration}`;
         document.getElementById('video-unit').textContent = `📚 ${video.unit}`;
-        document.getElementById('video-views').textContent = `👁️ ${getVideoViews(video.id)} izlenme`;
         
         const videoElement = document.getElementById('main-video');
         videoElement.querySelector('source').src = video.videoUrl;
         videoElement.load();
-        
-        const newViews = incrementVideoViews(video.id);
-        document.getElementById('video-views').textContent = `👁️ ${newViews} izlenme`;
         
         videoElement.addEventListener('timeupdate', function() {
             const progress = (this.currentTime / this.duration) * 100;
@@ -290,5 +274,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-
