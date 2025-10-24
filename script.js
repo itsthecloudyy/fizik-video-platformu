@@ -76,25 +76,10 @@ async function loadAllUnits() {
         </div>
     `).join('');
 
-    const searchInput = document.getElementById('search-input');
-    if (searchInput) {
-        searchInput.addEventListener('input', filterVideos);
-    }
+    // Arama input'u ve event listener'ı kaldırıldı
 }
 
-function filterVideos(e) {
-    const searchTerm = e.target.value.toLowerCase();
-    const videoItems = document.querySelectorAll('.video-item');
-    
-    videoItems.forEach(item => {
-        const title = item.querySelector('.video-item-title').textContent.toLowerCase();
-        if (title.includes(searchTerm)) {
-            item.style.display = 'flex';
-        } else {
-            item.style.display = 'none';
-        }
-    });
-}
+// filterVideos fonksiyonu tamamen kaldırıldı
 
 async function loadVideoPlayer() {
     const urlParams = new URLSearchParams(window.location.search);
